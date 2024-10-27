@@ -25,4 +25,6 @@ class Customer():
 
     def ride_home(self, spend_money: float) -> None:
         print(f"{self.name} rides home")
-        print(f"{self.name} now has {self.money - spend_money} dollars\n")
+        money_after_shop = self.money - spend_money
+        self.money = money_after_shop
+        print(f"{self.name} now has {money_after_shop} dollars\n")
