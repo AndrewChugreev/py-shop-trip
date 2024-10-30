@@ -26,20 +26,10 @@ class Shop:
         print(f"Date: {current_datatime}")
         print(f"Thanks, {customer.name}, for your purchase!")
         print("You have bought:")
-        milk = customer.product_cart.get("milk")
-        print(f"{milk} "
-              f"milks for "
-              f"{milk * self.products.get('milk')}"
-              f" dollars")
-        bread = customer.product_cart.get("bread")
-        print(f"{bread} "
-              f"breads for "
-              f"{round(bread * self.products.get('bread'))}"
-              f" dollars")
-        butter = customer.product_cart.get("butter")
-        print(f"{butter}"
-              f" butters for "
-              f"{butter * self.products.get('butter')}"
-              f" dollars")
+        for product, quantity in customer.product_cart.items():
+            if product in self.products:
+                cost = self.products[product] * quantity
+                cost_str = f"{cost:.1f}" if cost % 1 else f"{int(cost)}"
+                print(f"{quantity} {product}s for {cost_str} dollars")
         print(f"Total cost is {self.products_cost(customer)} dollars")
         print("See you again!\n")
